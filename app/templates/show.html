@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Password</th>
+         
+        </tr>
+        {% for i in all_data %}
+        <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.email}}</td>
+          <td>{{i.password}}</td>
+          
+        </tr>
+    {% endfor %}
+       
+      </table> 
+      <form action="{% url 'delete' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email </label>
+          <input type="text"  name="email">       
+        </div>       
+        <button type="submit" class="btn btn-primary">Delte</button>
+      </form>
+
+      <form action="{% url 'update' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">ID </label>
+          <input type="text"  name="id">       
+          <label for="exampleInputEmail1">Email </label>
+          <input type="text"  name="email">       
+         
+        </div>       
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+      
+</body>
+</html>
+
